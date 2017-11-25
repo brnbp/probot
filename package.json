@@ -1,0 +1,19 @@
+{
+  "name": "prosie",
+  "version": "0.0.1",
+  "description": "automated pr reminder",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brnbp/prosie.git"
+  },
+  "author": "Bruno Pereira <me@brnbp.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brnbp/prosie/issues"
+  },
+  "homepage": "https://github.com/brnbp/prosie#readme"
+}
