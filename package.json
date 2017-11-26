@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/brnbp/prosie#readme",
   "dependencies": {
-    "dotenv": "^4.0.0"
+    "axios": "^0.17.1",
+    "dotenv": "^4.0.0",
+    "moment": "^2.19.2",
+    "qs": "^6.5.1"
   }
 }
