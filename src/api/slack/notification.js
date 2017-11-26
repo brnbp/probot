@@ -1,5 +1,4 @@
 const exec = require('child_process').exec;
-const {slack} = require('../../../config/config')
 
 class Notification {
     fire(message, callback) {
@@ -8,13 +7,13 @@ class Notification {
         exec(curl, callback)
     }
     getUri() {
-        return 'https://hooks.slack.com/services/' + slack.hook;
+        return 'https://hooks.slack.com/services/' + process.env.SLACK_HOOK;
     }
     preparePayload(data) {
         return {
-            channel: slack.channel || "#random",
-            username: slack.username || 'Rosie',
-            icon_url: slack.icon || '',
+            channel: process.env.SLACK_CHANNEL || "#random",
+            username: process.env.SLACK_USERNAME || 'Rosie',
+            icon_url: process.env.SLACK_ICON || '',
             text: data.title,
             attachments: data.contents.map(content => ({
                 title: content.pull_request_title,

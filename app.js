@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const Builder = require('./src/message-builder')
 const GithubPRs = require('./src/api/github/pull-requests');
 const SlackNotification = require('./src/api/slack/notification')

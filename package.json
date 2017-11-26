@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/brnbp/prosie/issues"
   },
-  "homepage": "https://github.com/brnbp/prosie#readme"
+  "homepage": "https://github.com/brnbp/prosie#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0"
+  }
 }

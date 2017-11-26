@@ -1,5 +1,3 @@
-const {github} = require('../config/config')
-
 class MessageBuilder {
     openedPRs(prs) {
         if (!prs.length) {
@@ -11,10 +9,10 @@ class MessageBuilder {
             contents: this.formatPRs(prs)
         }
     }
-
+    
     stalePRs(prs) {
         return {
-            title: "Urghhh! These PRs are waiting more than " + (github.stale_days || 2) + " days to be reviewed!",
+            title: "Urghhh! These PRs are waiting more than " + process.env.GITHUB_STALE_DAYS + " days to be reviewed!",
             contents: this.formatPRs(prs)
         }
     }
