@@ -1,18 +1,23 @@
 require('dotenv').config()
 
-const Builder = require('./src/message-builder')
 const GithubPRs = require('./src/api/github/pull-requests');
+const MessageBuilder = require('./src/message-builder')
 const SlackNotification = require('./src/api/slack/notification')
 
-const openedPRs = GithubPRs.opened();
-console.log(
-    openedPRs,
-    Builder.openedPRs(openedPRs)
-)
-//SlackNotification.fire(Builder.openedPRs(openedPRs));
-
-const stalePRs = []//GithubPRs.stale();
-if (stalePRs.length) {
-    SlackNotification.fire(Builder.stalePRs(stalePRs));
+const dispatchOpenedPRs = () => {
+    GithubPRs.opened((response, err) => {
+        if (err) return;
+        SlackNotification.fire(MessageBuilder.openedPRs(response));
+    });
 }
 
+const dispatchStalePRs = () => {
+    GithubPRs.stale((response, err) => {
+        if (!response.length) return;
+        SlackNotification.fire(MessageBuilder.stalePRs(response));
+    });
+}
+
+dispatchOpenedPRs()
+dispatchStalePRs()
+SlackNotification.fire(MessageBuilder.clear());
