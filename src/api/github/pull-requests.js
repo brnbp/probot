@@ -1,66 +1,67 @@
-const exec = require('child_process').exec;
-
-function mock() {
-    return [
-        {
-          "id": 1,
-          "number": 1347,
-          "html_url": "https://github.com/octocat/Hello-World/pull/1347",
-          "state": "open",
-          "title": "New Feature Added",
-          "body": "Please pull these awesome changes",
-          "locked": false,
-          "created_at": "2017-11-25T09:28:54Z",
-          "updated_at": "2017-11-26T19:01:12Z",
-          "user": {
-            "login": "featureman",
-            "id": 1,
-            "avatar_url": "https://github.com/images/error/octocat_happy.gif",
-            "html_url": "https://github.com/octocat",
-            "type": "User",
-            "site_admin": false
-          }
-        },
-        {
-          "id": 2,
-          "number": 419,
-          "html_url": "https://github.com/octocat/Hello-World/pull/419",
-          "state": "open",
-          "title": "Fix Bug with Nav",
-          "body": "Please pull these awesome changes",
-          "locked": false,
-          "created_at": "2017-11-22T16:43:05Z",
-          "updated_at": "2017-11-22T16:43:05Z",
-          "user": {
-            "login": "buggerman",
-            "id": 1,
-            "avatar_url": "https://github.com/images/error/octocat_happy.gif",
-            "html_url": "https://github.com/octocat",
-            "type": "User",
-            "site_admin": false
-          }
-        }
-      ];
-}
+const request = require("axios");
+const moment = require('moment');
 
 class PullRequests {
+    get OPENED() {
+        return 1;
+    }
+    get STALE() {
+        return 2;
+    }
     opened(callback) {
-        return mock()
-
         this.retrieve(callback)
     }
     stale(callback) {
-        return mock()
-
-        this.retrieve(callback)
+        const lastUpdatedDate = moment().subtract(process.env.GITHUB_STALE_DAYS, 'days').format("YYYY-MM-DD")
+        this.retrieve(callback, {
+            qs: `+updated:<=${lastUpdatedDate}`
+        })
     }
-    getUri() {
-        return '';
+    getUrl(qs) {
+        const baseUrl = 'https://api.github.com/search/issues'
+        return `${baseUrl}?q=org:${process.env.GITHUB_ORGANIZATION}+type:pr+is:open${qs}`
     }
-    retrieve(callback) {
-        const curl = 'curl -s -X GET "' + this.getUri() + '" -H "Accept: application/json" -H "Authorization: Bearer ' + api_token + '"'
-        exec(curl, callback)
+    async retrieve(callback, opts = {qs:''}) {
+        try {
+            const response = await request.get(this.getUrl(opts.qs), this.getDefaultOpts());
+            callback(response.data, null);
+        } catch (error) {
+            callback(null, error.response.data)
+        }
     }
+    getDefaultOpts() { 
+        return {
+            headers: {
+                'Accept': 'application/vnd.github.v3+json',
+                'Content-Type': 'application/json',
+                'User-Agent': 'podty'
+            },        
+            params: {
+                sort: 'created',
+                order: 'asc',
+                access_token: process.env.GITHUB_ACCESS_TOKEN,
+            },
+            transformResponse: [this.transformer],
+        }
+    }
+    transformer(data) {
+        return JSON.parse(data).items.map(function(item){
+            return { 
+                number: item.number,
+                url: item.html_url,
+                title: item.title,
+                user: { 
+                    username: item.user.login,
+                    avatar: item.user.avatar_url,
+                    url: item.user.html_url,
+                },
+                state: item.state,
+                comments: item.comments,
+                created_at: item.created_at,
+                updated_at: item.updated_at,
+             }
+        })
+    } 
 }
 
 module.exports = new PullRequests
