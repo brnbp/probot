@@ -57,6 +57,21 @@ You need to install the script manually by following a few steps:
 
      robot --help        Shows a summary of available commands
    ````
+    or
+   ````
+     npm run morning       Verifies and tells the team about all open pull requests.
+     npm run afternoon     Verifies and tells the team about all open pull requests for more than a few days.
+   ````
+
+
+
+## Deploy to Heroku
+You can deploy the app using Heroku and then add the scheduler plugin (https://devcenter.heroku.com/articles/scheduler).
+The scheduler is at https://scheduler.heroku.com/dashboard
+The command to run is ````bin/robot morning```` and ````bin/robot afternoon````
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+    
    
       ROADMAP
     - create reports by teams
