@@ -23,6 +23,7 @@ class PullRequests {
     }
     async retrieve(callback, opts = {qs:''}) {
         try {
+            console.log(this.getUrl(opts.qs))
             const response = await request.get(this.getUrl(opts.qs), this.getDefaultOpts());
             callback(response.data, null);
         } catch (error) {
