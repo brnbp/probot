@@ -1,0 +1,31 @@
+{
+    "name": "Probot",
+    "description": "PR Robot is an automated pending pull requests reminder for organizations.",
+    "keywords": [],
+    "repository": "https://github.com/brnbp/probot",
+    "env": {
+      "GITHUB_ACCESS_TOKEN": {
+        "description": "your github access token"
+      },
+      "GITHUB_ORGANIZATION": {
+        "description": "your github organization name"
+      },
+      "GITHUB_STALE_DAYS": {
+          "description": "the number of days that a pull request without any movement is considered stale"
+      },
+      "SLACK_HOOK": {
+        "description": "slack webhook"
+      },
+      "SLACK_CHANNEL": {
+        "description": "slack channel to place the bot",
+        "value": "#channel-bot"
+      },
+      "PACKAGE": {
+        "description": "package's name",
+        "value": "default"
+      }
+    },
+    "addons": [
+      "scheduler"
+    ]
+  }
