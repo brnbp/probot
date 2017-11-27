@@ -6,27 +6,27 @@ class MessageBuilder {
         if (!prs.length) return this.clear();
 
         return {
-            title: "Good Morning folks! Here's all the PRs that need to be reviewed today!",
-            username: process.env.ROBOT_INFORMATIVE_NAME,
-            thumbnail: process.env.ROBOT_INFORMATIVE_IMG,
+            title: process.env.robot_info_msg,
+            username: process.env.robot_info_name,
+            thumbnail: process.env.robot_info_img,
             contents: this.formatPRs(prs, OPENED)
         }
     }
     
     stalePRs(prs) {
         return {
-            title: "Urghhh! These PRs are waiting more than " + process.env.GITHUB_STALE_DAYS + " days to be reviewed!",
-            username: process.env.ROBOT_ANGRY_NAME,
-            thumbnail: process.env.ROBOT_ANGRY_IMG,
+            title: process.env.robot_angry_msg,
+            username: process.env.robot_angry_name,
+            thumbnail: process.env.robot_angry_img,
             contents: this.formatPRs(prs, STALE)
         }
     }
 
     clear() {
         return {
-            title: "Woa, there's no PRs needed to be reviewed today!",
-            username: process.env.ROBOT_HAPPY_NAME,
-            thumbnail: process.env.ROBOT_HAPPY_IMG,
+            title: process.env.robot_happy_msg,
+            username: process.env.robot_happy_name,
+            thumbnail: process.env.robot_happy_img,
             contents: []
         }
     }
