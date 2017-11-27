@@ -2,7 +2,7 @@
 
 probot is an assistant for your organization's open pull requests, build on top of NodeJS.
 
-![screenshot](imgs/example.png)
+![screenshot](https://github.com/brnbp/probot/blob/master/imgs/example.png)
 
 
 #### Installation
