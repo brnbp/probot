@@ -12,7 +12,7 @@ class PullRequests {
         this.retrieve(callback)
     }
     stale(callback) {
-        const lastUpdatedDate = moment().subtract(process.env.GITHUB_STALE_DAYS, 'days').format("YYYY-MM-DD")
+        const lastUpdatedDate = moment().subtract(process.env.GITHUB_STALE_DAYS, 'days').format()
         this.retrieve(callback, {
             qs: `+updated:<=${lastUpdatedDate}`
         })

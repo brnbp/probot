@@ -6,9 +6,9 @@ class MessageBuilder {
         if (!prs.length) return this.clear();
 
         return {
-            title: "Good Morning! Here is all the PRs that need to be reviewed today!",
-            username: process.env.ROSIE_INFORMATIVE_NAME,
-            thumbnail: process.env.ROSIE_INFORMATIVE_IMG,
+            title: "Good Morning folks! Here's all the PRs that need to be reviewed today!",
+            username: process.env.ROBOT_INFORMATIVE_NAME,
+            thumbnail: process.env.ROBOT_INFORMATIVE_IMG,
             contents: this.formatPRs(prs, OPENED)
         }
     }
@@ -16,17 +16,17 @@ class MessageBuilder {
     stalePRs(prs) {
         return {
             title: "Urghhh! These PRs are waiting more than " + process.env.GITHUB_STALE_DAYS + " days to be reviewed!",
-            username: process.env.ROSIE_ANGRY_NAME,
-            thumbnail: process.env.ROSIE_ANGRY_IMG,
+            username: process.env.ROBOT_ANGRY_NAME,
+            thumbnail: process.env.ROBOT_ANGRY_IMG,
             contents: this.formatPRs(prs, STALE)
         }
     }
 
     clear() {
         return {
-            title: "Woa, there is no PRs needed to be reviewed today!",
-            username: process.env.ROSIE_HAPPY_NAME,
-            thumbnail: process.env.ROSIE_HAPPY_IMG,
+            title: "Woa, there's no PRs needed to be reviewed today!",
+            username: process.env.ROBOT_HAPPY_NAME,
+            thumbnail: process.env.ROBOT_HAPPY_IMG,
             contents: []
         }
     }
@@ -41,12 +41,15 @@ class MessageBuilder {
     metaMessage(pr, type) {
         switch (type) {
             case OPENED:
-                return `Created ${moment(pr.created_at).fromNow()} - ${pr.comments} comments`;
+                return `Created ${moment(pr.created_at).fromNow()} - ${this.countComments(pr.comments)}`;
                 break;
             case STALE:
-                return `Last update ${moment(pr.updated_at).fromNow()} - ${pr.comments} comments`;
+                return `Updated ${moment(pr.updated_at).fromNow()} - ${this.countComments(pr.comments)}`;
                 break;
         }
+    }
+    countComments(comments) {
+        return `${comments} ${comments > 1 ? 'comments' : 'comment'}`
     }
 }
 

@@ -13,7 +13,7 @@ const dispatchOpenedPRs = () => {
 
 const dispatchStalePRs = () => {
     GithubPRs.stale((response, err) => {
-        if (!response.length) return;
+        if (err || !response || !response.length) return;
         SlackNotification.fire(MessageBuilder.stalePRs(response));
     });
 }
