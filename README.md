@@ -2,8 +2,13 @@
 
 > probot is an assistant for your organization's open pull requests, build on top of NodeJS.
 
-
 ![screenshot](https://github.com/brnbp/probot/blob/master/imgs/example.png)
+
+
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Deploy](#deploy-with-heroku)
+- [Personalize](#personalize)
 
 
 ## Configuration:
@@ -15,7 +20,7 @@
     - SLACK_HOOK             = slack webhook (see https://slack.com/services/new/incoming-webhook)
     - SLACK_CHANNEL          = slack channel to place the bot
 
-    - PACKAGE                = package's name [see here](#personalize)
+    - PACKAGE                = package's name 
    
 
 
@@ -46,7 +51,7 @@
      npm run afternoon     Verifies and tells the team about all open pull requests for more than a few days.
    ````
 
-## Deploy to Heroku
+## Deploy with Heroku
 You can deploy the app using Heroku and then add the scheduler plugin (https://devcenter.heroku.com/articles/scheduler).
 
 The scheduler is at https://scheduler.heroku.com/dashboard
