@@ -1,17 +1,13 @@
 ### PROBOT - Pull Requests Robot Assistent
 
-probot is an assistant for your organization's open pull requests, build on top of NodeJS.
+> probot is an assistant for your organization's open pull requests, build on top of NodeJS.
+
 
 ![screenshot](https://github.com/brnbp/probot/blob/master/imgs/example.png)
 
 
-#### Installation
-
-#### Minimum requirements:
-  - node: >= 7.6
-
-Configuration:
- #### 1. rename .env.example file to .env and fulfill the following things:
+## Configuration:
+ #### 1. Rename .env.example file to .env and fulfill the following things:
     - GITHUB_ACCESS_TOKEN    = your github access token (see https://github.com/settings/tokens)
     - GITHUB_ORGANIZATION    = your github organization name
     - GITHUB_STALE_DAYS      = the number of days that a pull request without any movement is considered stale
@@ -28,26 +24,18 @@ Configuration:
     - ROBOT_ANGRY_NAME       = better not know him, if he appears, things are going bad, give him a name
     - ROBOT_ANGRY_IMG        = well, choose a photo right from your nightmares here
 
-
-You need to install the script manually by following a few steps:
-
-1. Fetch a copy of this repository.
-   ````
-     Ex: 
-       $ git clone git@github.com:brnbp/probot.git && cd probot
-   ````
-
-2. Navigate to the folder where you fetched the repository and install dependencies:
-   ````
+ #### 2. Navigate to the folder where you fetched the repository and install dependencies:
+  ````
     $ yarn 
     or
     $ npm install
-   ````
+  ````
 
-3. Make sure the file called `robot` is executable:
-   ````
-   chmod +x ./bin/robot
-   ````
+ #### 3. Make sure the file called `robot` is executable:
+  ````
+   $ chmod +x ./bin/robot
+  ````
+
 
 ## Usage
 
@@ -63,8 +51,6 @@ You need to install the script manually by following a few steps:
      npm run afternoon     Verifies and tells the team about all open pull requests for more than a few days.
    ````
 
-
-
 ## Deploy to Heroku
 You can deploy the app using Heroku and then add the scheduler plugin (https://devcenter.heroku.com/articles/scheduler).
 
@@ -73,13 +59,13 @@ The scheduler is at https://scheduler.heroku.com/dashboard
 The command to run is ````$ npm run morning```` and ````$ npm run afternoon````
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-    
-   
-      ROADMAP
-    - create reports by teams
-    - robots can post quotes
-    - maybe create packs for custom robots with images and custom messages
-      - ex: 
-        - christmas robots 
-        - easter robots
+
+
+ROADMAP
+  - create reports by teams
+  - robots can post quotes
+  - maybe create packs for custom robots with images and custom messages
+    - ex: 
+      - christmas robots 
+      - easter robots
         - halloween robots
