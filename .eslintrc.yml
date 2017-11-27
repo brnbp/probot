@@ -1,0 +1,9 @@
+extends: airbnb-base
+rules:
+  class-methods-use-this: off
+  import/no-dynamic-require: off
+  no-return-assign: off
+  function-paren-newline: off
+  no-unused-expressions: off
+  comma-dangle: off
+  quote-props: off

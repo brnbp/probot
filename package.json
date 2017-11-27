@@ -6,6 +6,7 @@
   "scripts": {
     "morning": "bin/robot morning",
     "afternoon": "bin/robot afternoon",
+    "lint": "node_modules/.bin/eslint src/** bin/robot ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,5 +25,10 @@
     "moment": "^2.19.2",
     "qs": "^6.5.1",
     "yargs": "^10.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.12.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
   }
 }
