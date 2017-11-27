@@ -15,14 +15,8 @@
     - SLACK_HOOK             = slack webhook (see https://slack.com/services/new/incoming-webhook)
     - SLACK_CHANNEL          = slack channel to place the bot
 
-    - ROBOT_INFORMATIVE_NAME = he's the one that keeps the team updated with all opened PRs, give him a name
-    - ROBOT_INFORMATIVE_IMG  = choose a nice photo, he's a great robot
+    - PACKAGE                = package's name [see here](#personalize)
 
-    - ROBOT_HAPPY_NAME       = he's the one that celebrates, with your team, the PRs that are closed/merged, give him a name
-    - ROBOT_HAPPY_IMG        = he deserves an awesome photo
-
-    - ROBOT_ANGRY_NAME       = better not know him, if he appears, things are going bad, give him a name
-    - ROBOT_ANGRY_IMG        = well, choose a photo right from your nightmares here
 
  #### 2. Navigate to the folder where you fetched the repository and install dependencies:
   ````
@@ -61,11 +55,46 @@ The command to run is ````$ npm run morning```` and ````$ npm run afternoon````
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 
+# Personalize
+Robots personality are possible to change by packages.
+
+Packages are simple js file with a few properties, as you can see in the default template:
+
+````javascript
+  module.exports = {
+    "package": "star-wars",
+    "robots": [
+        {
+            "type": "info",
+            "name": "Informative C3PO",
+            "img": "https://cdn0.iconfinder.com/data/icons/famous-character-vol-1-colored/48/JD-34-128.png",
+            "msg": "Good Morning folks! Here's all the PRs that need to be reviewed today!"
+        },
+        {
+            "type": "happy",
+            "name": "Happy BB-8",
+            "img": "https://cdn0.iconfinder.com/data/icons/famous-character-vol-1-colored/48/JD-41-128.png",
+            "msg": "Woa, there's no PRs needed to be reviewed today!"
+        },
+        {
+            "type": "angry",
+            "name": "Angry Vader",
+            "img": "https://cdn0.iconfinder.com/data/icons/famous-character-vol-1-colored/48/JD-33-128.png",
+            "msg": "Urghhh! These PRs are waiting more than %DAYS% days to be reviewed!"
+        }
+    ]
+}
+````
+
+You can create an package using the default as template
+  - ````$ cp packs/default.js packs/custom.js````
+  - fulfill with the new personality for the robots
+  - change the PACKAGE key at .env file for the new pack name (without the .js extension)
+
+
+---
+
+
 ROADMAP
   - create reports by teams
   - robots can post quotes
-  - maybe create packs for custom robots with images and custom messages
-    - ex: 
-      - christmas robots 
-      - easter robots
-        - halloween robots
