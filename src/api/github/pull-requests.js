@@ -12,7 +12,7 @@ class PullRequests {
         this.retrieve(callback)
     }
     stale(callback) {
-        const lastUpdatedDate = moment().subtract(process.env.GITHUB_STALE_DAYS, 'days').format()
+        const lastUpdatedDate = moment().subtract(process.env.GITHUB_STALE_DAYS, 'days').format('YYYY-MM-DD')
         this.retrieve(callback, {
             qs: `+updated:<=${lastUpdatedDate}`
         })
@@ -23,7 +23,6 @@ class PullRequests {
     }
     async retrieve(callback, opts = {qs:''}) {
         try {
-            console.log(this.getUrl(opts.qs))
             const response = await request.get(this.getUrl(opts.qs), this.getDefaultOpts());
             callback(response.data, null);
         } catch (error) {
