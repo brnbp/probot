@@ -1,23 +1,23 @@
 #!/usr/bin/env node
 
-require('dotenv').config()
-require('../src/package-parser').compile()
-const yargs = require('yargs')
+require('dotenv').config();
+require('../src/package-parser').compile();
+const yargs = require('yargs');
 const GithubPRs = require('../src/api/github/pull-requests');
-const MessageBuilder = require('../src/message-builder')
-const SlackNotification = require('../src/api/slack/notification')
+const MessageBuilder = require('../src/message-builder');
+const SlackNotification = require('../src/api/slack/notification');
 
 yargs
-    .command('morning', 'Verifies and tells the team about all open pull requests', () => 
-        GithubPRs.opened((response, err) => {
-            if (err) return;
-            SlackNotification.fire(MessageBuilder.openedPRs(response));
-        })
-    )
-    .command('afternoon', 'Verifies and tells the team about all open pull requests for more than a few days', () => 
-        GithubPRs.stale((response, err) => {
-            if (err || !response || !response.length) return;
-            SlackNotification.fire(MessageBuilder.stalePRs(response));
-        })
-    )
-    .argv
+  .command('morning', 'Verifies and tells the team about all open pull requests', () =>
+    GithubPRs.opened((response, err) => {
+      if (err) return;
+      SlackNotification.fire(MessageBuilder.openedPRs(response));
+    })
+  )
+  .command('afternoon', 'Verifies and tells the team about all open pull requests for more than a few days', () =>
+    GithubPRs.stale((response, err) => {
+      if (err || !response || !response.length) return;
+      SlackNotification.fire(MessageBuilder.stalePRs(response));
+    })
+  )
+  .argv;
