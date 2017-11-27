@@ -70,7 +70,7 @@ You can deploy the app using Heroku and then add the scheduler plugin (https://d
 
 The scheduler is at https://scheduler.heroku.com/dashboard
 
-The command to run is ````bin/robot morning```` and ````bin/robot afternoon````
+The command to run is ````$ npm run morning```` and ````$ npm run afternoon````
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
     
