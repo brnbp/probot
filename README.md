@@ -24,14 +24,14 @@
    
 
 
- #### 2. Navigate to the folder where you fetched the repository and install dependencies:
+ #### 2. Install dependencies:
   ````
     $ yarn 
     or
     $ npm install
   ````
 
- #### 3. Make sure the file called `robot` is executable:
+ #### 3. Make sure that the file called `robot` is executable:
   ````
    $ chmod +x ./bin/robot
   ````
