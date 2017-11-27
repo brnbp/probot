@@ -4,6 +4,8 @@
   "description": "automated pr reminder",
   "main": "robot",
   "scripts": {
+    "morning": "bin/robot morning",
+    "afternoon": "bin/robot afternoon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
