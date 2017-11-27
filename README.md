@@ -16,6 +16,7 @@
     - SLACK_CHANNEL          = slack channel to place the bot
 
     - PACKAGE                = package's name [see here](#personalize)
+   
 
 
  #### 2. Navigate to the folder where you fetched the repository and install dependencies:
@@ -55,7 +56,7 @@ The command to run is ````$ npm run morning```` and ````$ npm run afternoon````
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 
-# Personalize
+## Personalize
 Robots personality are possible to change by packages.
 
 Packages are simple js file with a few properties, as you can see in the default template:
