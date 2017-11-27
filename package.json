@@ -1,25 +1,26 @@
 {
-  "name": "prosie",
+  "name": "probot",
   "version": "0.0.1",
   "description": "automated pr reminder",
-  "main": "app.js",
+  "main": "robot",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brnbp/prosie.git"
+    "url": "git+https://github.com/brnbp/probot.git"
   },
   "author": "Bruno Pereira <me@brnbp.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/brnbp/prosie/issues"
+    "url": "https://github.com/brnbp/probot/issues"
   },
-  "homepage": "https://github.com/brnbp/prosie#readme",
+  "homepage": "https://github.com/brnbp/probot#readme",
   "dependencies": {
     "axios": "^0.17.1",
     "dotenv": "^4.0.0",
     "moment": "^2.19.2",
-    "qs": "^6.5.1"
+    "qs": "^6.5.1",
+    "yargs": "^10.0.3"
   }
 }

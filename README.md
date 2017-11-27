@@ -25,6 +25,35 @@ Configuration:
     - ROBOT_ANGRY_NAME       = better not know him, if he appears, things are going bad, give him a name
     - ROBOT_ANGRY_IMG        = well, choose a photo right from your nightmares here
 
+
+You need to install the script manually by following a few steps:
+
+1. Fetch a copy of this repository.
+   ````
+     Ex: 
+       $ git clone git@github.com:brnbp/probot.git && cd probot
+   ````
+
+2. Navigate to the folder where you fetched the repository and install dependencies:
+   ````
+    $ yarn 
+    or
+    $ npm install
+   ````
+
+3. Make sure the file called `robot` is executable:
+   ````
+   chmod +x ./bin/robot
+   ````
+
+## Usage
+
+   ````
+     robot morning       Verifies and tells the team about all open pull requests.
+     robot afternoon     Verifies and tells the team about all open pull requests for more than a few days.
+
+     robot --help        Shows a summary of available commands
+   ````
    
       ROADMAP
     - create reports by teams
