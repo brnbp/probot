@@ -13,9 +13,8 @@
 
 ### Installing
 ```
- $ npm install probotjs
+ $ git clone git@github.com:brnbp/probot.git
 ```
-
 
 
 ### Configuration:
