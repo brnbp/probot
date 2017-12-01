@@ -11,7 +11,8 @@
         "description": "your github organization name"
       },
       "GITHUB_STALE_DAYS": {
-          "description": "the number of days that a pull request without any movement is considered stale"
+          "description": "the number of days that a pull request without any movement is considered stale",
+          "value": "2"
       },
       "SLACK_HOOK": {
         "description": "slack webhook (see https://slack.com/services/new/incoming-webhook)"
