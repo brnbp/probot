@@ -10,6 +10,10 @@
       "GITHUB_ORGANIZATION": {
         "description": "your github organization name"
       },
+      "GITHUB_STALE_REFERENCE": {
+        "description": "referente to consider an pull request staled, can be by the created date or last updated date (updated or created)",
+        "value": "updated"
+      },
       "GITHUB_STALE_DAYS": {
           "description": "the number of days that a pull request without any movement is considered stale"
       },

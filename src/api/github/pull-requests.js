@@ -1,5 +1,6 @@
 const request = require('axios');
 const moment = require('moment');
+const InvalidParameterError = require('./invalid-parameter-error');
 
 class PullRequests {
   get OPENED() {
@@ -12,9 +13,12 @@ class PullRequests {
     this.retrieve(callback);
   }
   stale(callback) {
+    if (!['created', 'updated'].includes(process.env.GITHUB_STALE_REFERENCE)) {
+      throw new InvalidParameterError();
+    }
     const lastUpdatedDate = moment().subtract(process.env.GITHUB_STALE_DAYS, 'days').format('YYYY-MM-DD');
     this.retrieve(callback, {
-      qs: `+updated:<=${lastUpdatedDate}`,
+      qs: `+${process.env.GITHUB_STALE_REFERENCE}:<=${lastUpdatedDate}`,
     });
   }
   getUrl(qs) {

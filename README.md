@@ -15,6 +15,7 @@
  #### 1. Rename .env.example file to .env and fulfill the following things:
     - GITHUB_ACCESS_TOKEN    = your github access token (see https://github.com/settings/tokens)
     - GITHUB_ORGANIZATION    = your github organization name
+    - GITHUB_STALE_REFERENCE = referente to consider an pull request staled, can be by the created date or last updated date
     - GITHUB_STALE_DAYS      = the number of days that a pull request without any movement is considered stale
 
     - SLACK_HOOK             = slack webhook (see https://slack.com/services/new/incoming-webhook)
