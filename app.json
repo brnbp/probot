@@ -5,7 +5,7 @@
     "repository": "https://github.com/brnbp/probot",
     "env": {
       "GITHUB_ACCESS_TOKEN": {
-        "description": "your github access token"
+        "description": "your github access token (see https://github.com/settings/tokens)"
       },
       "GITHUB_ORGANIZATION": {
         "description": "your github organization name"
@@ -15,10 +15,11 @@
         "value": "updated"
       },
       "GITHUB_STALE_DAYS": {
-          "description": "the number of days that a pull request without any movement is considered stale"
+          "description": "the number of days that a pull request without any movement is considered stale",
+          "value": "2"
       },
       "SLACK_HOOK": {
-        "description": "slack webhook"
+        "description": "slack webhook (see https://slack.com/services/new/incoming-webhook)"
       },
       "SLACK_CHANNEL": {
         "description": "slack channel to place the bot",

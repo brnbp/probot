@@ -1,17 +1,23 @@
-### PROBOT - Pull Requests Robot Assistent
+## PROBOT - Pull Requests Robot Assistent
 
 > probot is an assistant for your organization's open pull requests, build on top of NodeJS.
 
 ![screenshot](https://github.com/brnbp/probot/blob/master/imgs/example.png)
 
-
+- [Installation](#installing)
 - [Configuration](#configuration)
 - [Usage](#usage)
 - [Deploy](#deploy-with-heroku)
 - [Personalize](#personalize)
 
 
-## Configuration:
+### Installing
+```
+ $ git clone git@github.com:brnbp/probot.git
+```
+
+
+### Configuration:
  #### 1. Rename .env.example file to .env and fulfill the following things:
     - GITHUB_ACCESS_TOKEN    = your github access token (see https://github.com/settings/tokens)
     - GITHUB_ORGANIZATION    = your github organization name
@@ -38,7 +44,7 @@
   ````
 
 
-## Usage
+### Usage
 
    ````
      robot morning       Verifies and tells the team about all open pull requests.
@@ -52,7 +58,7 @@
      npm run afternoon     Verifies and tells the team about all open pull requests for more than a few days.
    ````
 
-## Deploy with Heroku
+### Deploy with Heroku
 You can deploy the app using Heroku and then add the scheduler plugin (https://devcenter.heroku.com/articles/scheduler).
 
 The scheduler is at https://scheduler.heroku.com/dashboard
@@ -62,7 +68,7 @@ The command to run is ````$ npm run morning```` and ````$ npm run afternoon````
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 
-## Personalize
+### Personalize
 Robots personality are possible to change by packages.
 
 Packages are simple js file with a few properties, as you can see in the default template:
