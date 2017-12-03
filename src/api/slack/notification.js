@@ -2,6 +2,7 @@ const request = require('axios');
 
 class Notification {
   fire(message) {
+    if (this.isWeekend()) return;
     request.post(this.getUri(), this.preparePayload(message));
   }
   getUri() {
@@ -18,6 +19,9 @@ class Notification {
         text: content.meta,
       })),
     };
+  }
+  isWeekend() {
+    return !new Date().getDay() % 6
   }
 }
 
