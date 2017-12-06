@@ -4,21 +4,20 @@
 
 ![screenshot](https://github.com/brnbp/probot/blob/master/imgs/example.png)
 
-- [Installation](#installing)
 - [Configuration](#configuration)
 - [Usage](#usage)
 - [Deploy](#deploy-with-heroku)
 - [Personalize](#personalize)
 
 
-### Installing
-```
- $ git clone git@github.com:brnbp/probot.git
-```
-
 
 ### Configuration:
- #### 1. Rename .env.example file to .env and fulfill the following things:
+ #### 1. Installing
+  ```
+    $ git clone git@github.com:brnbp/probot.git
+  ```
+
+ #### 2. Rename .env.example file to .env and fulfill the following things:
     - GITHUB_ACCESS_TOKEN    = your github access token (see https://github.com/settings/tokens)
     - GITHUB_ORGANIZATION    = your github organization name
     - GITHUB_STALE_REFERENCE = referente to consider an pull request staled, can be by the created date or last updated date
@@ -30,15 +29,14 @@
     - PACKAGE                = package's name 
    
 
-
- #### 2. Install dependencies:
+ #### 3. Install dependencies:
   ````
     $ yarn 
     or
     $ npm install
   ````
 
- #### 3. Make sure that the file called `robot` is executable:
+ #### 4. Make sure that the file called `robot` is executable:
   ````
    $ chmod +x ./bin/robot
   ````
