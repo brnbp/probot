@@ -22,7 +22,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "dotenv": "^4.0.0",
-    "moment": "^2.19.2",
+    "moment": "^2.19",
     "qs": "^6.5.1",
     "yargs": "^10.0.3"
   },
