@@ -23,7 +23,16 @@ class PullRequests {
   }
   getUrl(qs) {
     const baseUrl = 'https://api.github.com/search/issues';
-    return `${baseUrl}?q=org:${process.env.GITHUB_ORGANIZATION}+type:pr+is:open${qs}`;
+
+    const repository = process.env.GITHUB_REPOSITORY;
+    const organization = process.env.GITHUB_ORGANIZATION;
+
+    let filter = `org:${organization}`;
+    if (repository) {
+      filter = `repo:${organization}/${repository}`;
+    }
+
+    return `${baseUrl}?q=${filter}+type:pr+is:open${qs}`;
   }
   async retrieve(callback, opts = { qs: '' }) {
     try {
