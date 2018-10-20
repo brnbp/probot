@@ -26,10 +26,17 @@ class PullRequests {
 
     const repository = process.env.GITHUB_REPOSITORY;
     const organization = process.env.GITHUB_ORGANIZATION;
+    const label = process.env.GITHUB_LABELS;
 
     let filter = `org:${organization}`;
     if (repository) {
       filter = `repo:${organization}/${repository}`;
+    }
+
+    if (label) {
+      label.split(',').map(label => {
+        filter += `+label:"${label}"`
+      })
     }
 
     return `${baseUrl}?q=${filter}+type:pr+is:open${qs}`;
