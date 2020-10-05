@@ -33,8 +33,6 @@
 
  #### 3. Install dependencies:
   ````
-    $ yarn 
-    or
     $ npm install
   ````
 
