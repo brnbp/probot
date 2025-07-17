@@ -1,4 +1,4 @@
-## PROBOT - Pull Requests Robot Assistent -
+## PROBOT - Pull Requests Robot Assistent
 
 > probot is an assistant for your organization's open pull requests, build on top of NodeJS.
 
